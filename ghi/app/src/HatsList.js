@@ -2,7 +2,8 @@ import React from 'react';
 
 class HatsList extends React.Component {
     state = {
-        hats: []
+        hats: [],
+        locations: []
     }
 
     async getHatsList() {
@@ -34,6 +35,7 @@ class HatsList extends React.Component {
                     <th>Fabric</th>
                     <th>Color</th>
                     <th>Location</th>
+                    <th>Image</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +45,8 @@ class HatsList extends React.Component {
                             <td>{ hat.style_name }</td>
                             <td>{ hat.fabric }</td>
                             <td>{ hat.color }</td>
-                            <td>{ hat.location }</td>
+                            <td>{ hat.location.closet_name }, Shelf { hat.location.shelf_number}, Section { hat.location.section_number}</td>
+                            <td><img src={ hat.url } width="100" height="90"/></td>
                             <td><button onClick={() => this.handleDelete(hat.id)}>Delete</button></td>
                         </tr>
                     );

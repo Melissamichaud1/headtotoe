@@ -15,9 +15,9 @@ class HatForm extends React.Component {
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
-    this.handleCreate = this.handleCreate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  async handleCreate(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
     delete data.locations;
@@ -110,7 +110,7 @@ class HatForm extends React.Component {
                 <div className="form-floating mb-3">
                   <input
                     onChange={this.handleStyleNameChange}
-                    value={this.state.styleName}
+                    value={this.state.style_name}
                     placeholder="Style name"
                     required
                     type="text"
