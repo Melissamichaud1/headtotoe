@@ -48,6 +48,18 @@ class HatForm extends React.Component {
     }
   }
 
+    // get data for locations
+    async componentDidMount() {
+    const url = "http://localhost:8100/api/locations/";
+
+    const response = await fetch(url);
+
+    if (response.ok) {
+        const data = await response.json();
+        this.setState({ locations: data.locations });
+    }
+    }
+
   handleFabricChange(event) {
     const value = event.target.value;
     this.setState({ fabric: value });
@@ -73,18 +85,6 @@ class HatForm extends React.Component {
     this.setState({ location: value });
   }
 
-
-  // get data for locations
-  async componentDidMount() {
-    const url = "http://localhost:8100/api/locations/";
-
-    const response = await fetch(url);
-
-    if (response.ok) {
-      const data = await response.json();
-      this.setState({ locations: data.locations });
-    }
-  }
 
   render() {
     return (
@@ -155,7 +155,7 @@ class HatForm extends React.Component {
                     name="location"
                     className="form-select"
                   >
-                    <option value="">Choose A Location</option>
+                    <option value="">Choose a location...</option>
                     {this.state.locations.map(location => {
                       return (
                         <option
