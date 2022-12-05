@@ -60,3 +60,15 @@ def api_list_shoes(request, bin_vo_id=None):
             encoder=ShoeDetailEncoder,
             safe=False,
         )
+
+@require_http_methods(["DELETE"])
+def api_show_shoes(reponse, id):
+    try:
+        shoe = Shoe.objects.get(id=id)
+        shoe.delete()
+        return JsonResponse(
+            {'message': 'Shoe was deleted successfully'},
+            safe = False,
+        )
+    except Shoe.DoesNotExist:
+        return JsonResponse({"message": 'The shoe you are tring to delete does not exist'})
