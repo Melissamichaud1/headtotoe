@@ -3,9 +3,11 @@ import MainPage from './MainPage';
 import HatForm from './HatForm';
 import HatsList from './HatsList';
 import Nav from './Nav';
+import ShoeForm from './ShoeForm';
+import ShoesList from './ShoesList';
 
 function App(props) {
-  if (props.hats === undefined) {
+  if (props === undefined) {
     return null;
   }
   return (
@@ -23,10 +25,16 @@ function App(props) {
               element={<HatsList hats={props.hats} />}
             />
           </Route>
+          <Route path="shoes">
+            <Route path="new" element={<ShoeForm />} />
+            <Route path="" element={<ShoesList shoes={props.shoes}/>}
+            />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
   );
 }
+
 
 export default App;

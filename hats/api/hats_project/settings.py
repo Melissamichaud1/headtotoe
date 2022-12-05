@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "colorfield",
     "corsheaders",
     "hats_rest.apps.HatsApiConfig",
     'django.contrib.admin',
