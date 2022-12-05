@@ -61,7 +61,6 @@ class HatForm extends React.Component {
         url: "",
         location: "",
       };
-      this.setState({ success: true })
       this.setState(cleared);
     }
   }
