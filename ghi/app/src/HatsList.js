@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Calls the getHatsList() function which makes a call to the server to get the list of hats
+// If response OK -> sets hats state to the list of hats
+// Else -> sets hats state to an empty array
 class HatsList extends React.Component {
     state = {
         hats: [],
@@ -16,16 +19,31 @@ class HatsList extends React.Component {
     }
 
 
+
+    // Calls the getHatsList() function to get list of hats from server
+    // Sets the state of the component to the list of hats
+    // Renders list of hats
     async componentDidMount() {
         this.getHatsList();
     }
 
+
+
     async handleDelete(event) {
         const url = `http://localhost:8090/api/hats/${event}`;
+        // Uses await keyword to wait for the response from the server
+        // Uses fetch() method to send a DELETE request to the server
         await fetch(url, {method: "DELETE"})
+        // Uses the getHatsList() method to get the updated list of hats from the server
         this.getHatsList()
     }
 
+
+    // Creating a table with a header row and columns
+    // Mapping over the hats array and creating a new row for each hat
+    // Using hat's id as the key for the row
+    // Using the handleDelete function to create a button that will delete the hat when clicked
+    // Using the buttons onClick attribute to call the handleDelete function
     render() {
         return (
         <table className="table table-striped">
