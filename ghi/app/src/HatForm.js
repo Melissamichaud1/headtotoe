@@ -1,5 +1,9 @@
 import React from "react";
 
+// React class component
+// Setting a constructor method that will be called whenever we create a new HatForm component
+// Setting a state object that will be used to store the values of the form fields
+// Setting the states of each component to an empty object and locations to an empty array
 class HatForm extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +14,8 @@ class HatForm extends React.Component {
       url: "",
       locations: [],
     };
+    // Whenever user changes value of inputs, these methods are called
+    // Binding the handle___Change method to the component
     this.handleFabricChange = this.handleFabricChange.bind(this);
     this.handleStyleNameChange = this.handleStyleNameChange.bind(this);
     this.handleColorChange = this.handleColorChange.bind(this);
@@ -17,12 +23,19 @@ class HatForm extends React.Component {
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  // Prevents the default action of the form from being submitted
+  // Takes all the data from the form and stores it in a variable called data
+  // Deletes the locations property from the data objects
+  // Logs the data object to the console
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
     delete data.locations;
     console.log(data);
 
+    // Using the fetch API to send a POST request to the hats URL
+    // Sending the data object as the body of the request
+    // Setting the content-type header to application/json
     const hatsUrl = "http://localhost:8090/api/hats/";
     const fetchConfig = {
       method: "post",
@@ -31,6 +44,11 @@ class HatForm extends React.Component {
         "Content-Type": "application/json",
       },
     };
+    // Fetching the data from the API
+    // Checking if the response is OK
+    // Parsing the response as JSON
+    // Setting the state with the new hat
+    // Clearing the form
     const response = await fetch(hatsUrl, fetchConfig);
     if (response.ok) {
       const newHat = await response.json();
@@ -49,6 +67,10 @@ class HatForm extends React.Component {
   }
 
     // get data for locations
+    // first calls the componentDidMount() method -> part of react lifecycle and
+    // is called after the component output has been rendered to the DOM
+    // Makes a call to the backend API to retrieve the list of locations
+    // If the response is successful, sets the state of the component to the locations array
     async componentDidMount() {
     const url = "http://localhost:8100/api/locations/";
 
@@ -60,6 +82,8 @@ class HatForm extends React.Component {
     }
     }
 
+// Creating handle___Change function that takes in an event
+// Setting the state of ___ to the value of the target's value
   handleFabricChange(event) {
     const value = event.target.value;
     this.setState({ fabric: value });
@@ -118,7 +142,7 @@ class HatForm extends React.Component {
                     id="style_name"
                     className="form-control"
                   />
-                  <label htmlFor="room_count">Style</label>
+                  <label htmlFor="style_name">Style</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input
@@ -131,7 +155,7 @@ class HatForm extends React.Component {
                     id="color"
                     className="form-control"
                   />
-                  <label htmlFor="city">Color</label>
+                  <label htmlFor="color">Color</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input
@@ -144,7 +168,7 @@ class HatForm extends React.Component {
                     id="url"
                     className="form-control"
                   />
-                  <label htmlFor="city">Picture URL</label>
+                  <label htmlFor="url">Picture URL</label>
                 </div>
                 <div className="mb-3">
                   <select
