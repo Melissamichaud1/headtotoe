@@ -18,7 +18,7 @@ function MainPage() {
                 Add A Hat
               </Link>
               <Link
-                to="/shoess/new"
+                to="/shoes/new"
                 className="btn btn-primary btn-lg px-4 gap-3"
               >
                 Add A Shoe
