@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "colorfield",
     "shoes_rest.apps.ShoesApiConfig",
     "corsheaders",
     'django.contrib.admin',

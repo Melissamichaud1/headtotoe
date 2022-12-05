@@ -17,6 +17,9 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/shoes">Shoes</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" to="/shoes/new">Add Shoe</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/hats">Hats</NavLink>
             </li>
             <li className="nav-item">
