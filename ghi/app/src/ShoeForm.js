@@ -46,7 +46,6 @@ class ShoeForm extends React.Component {
                     pictureUrl: "",
                     bin: "",
                 };
-                this.setState({success: true})
                 this.setState(cleared);
             }
         }

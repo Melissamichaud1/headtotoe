@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
-function ShoesList(props) {
+import React, { useState, useEffect } from 'react';
 
-  const [shoes, setShoes] = useState(props.shoes)
+// async function deleteShoe(id) {
+//   console.log(id)
+//   const url = `http://localhost:8080/api/shoes/${id}/`;
+//   const response = await fetch (url,{method: "DELETE"})
+//   const responseJSON = await response.json()
+  // setShoes(shoes.filter(function(shoe){return shoe.id !== id}))
+  // };
 
-  async function deleteShoe(id){
+function ShoesList() {
+
+  const [shoes, setShoes] = useState([]);
+
+  useEffect(() => {
+    async function loadShoes() {
+      const response = await fetch("http://localhost:8080/api/shoes/");
+      if (response.ok) {
+        const data = await response.json();
+        setShoes(data.shoes);
+      } else {
+        console.error(response);
+      }
+    }
+    loadShoes();
+  },[])
+
+  async function deleteShoe(id) {
     console.log(id)
     const url = `http://localhost:8080/api/shoes/${id}/`;
     const response = await fetch (url,{method: "DELETE"})
-    if(response.ok){
-      setShoes(shoes.filter(function(shoe){return shoe.id !== id}))
-      setShoes(props.shoes);}
+    const responseJSON = await response.json()
+    setShoes(shoes.filter(function(shoe){return shoe.id !== id}))
     };
+
 
     return (
       <table className="table table-striped">

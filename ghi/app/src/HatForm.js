@@ -38,7 +38,7 @@ class HatForm extends React.Component {
     // Setting the content-type header to application/json
     const hatsUrl = "http://localhost:8090/api/hats/";
     const fetchConfig = {
-      method: "post",
+      method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,6 @@ class HatForm extends React.Component {
         url: "",
         location: "",
       };
-      this.setState({ success: true })
       this.setState(cleared);
     }
   }

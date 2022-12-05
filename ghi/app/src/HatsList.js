@@ -10,7 +10,7 @@ class HatsList extends React.Component {
     }
 
     async getHatsList() {
-        const response = await fetch("http://localhost:8090/api/hats")
+        const response = await fetch("http://localhost:8090/api/hats/")
         if(response.ok) {
             const data = await response.json();
             const hats = data.hats;
