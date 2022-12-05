@@ -62,7 +62,8 @@ class HatsList extends React.Component {
                         <tr key={hat.id}>
                             <td>{ hat.style_name }</td>
                             <td>{ hat.fabric }</td>
-                            <td>{ hat.color }</td>
+                            <td><svg xmlns="http://www.w3.org/2000/svg" width="100" height="90" fill={ hat.color } className="bi bi-square-fill" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/></svg></td>
                             <td>{ hat.location.closet_name }, Shelf { hat.location.shelf_number}, Section { hat.location.section_number}</td>
                             <td><img src={ hat.url } width="100" height="90"/></td>
                             <td><button onClick={() => this.handleDelete(hat.id)}>Delete</button></td>

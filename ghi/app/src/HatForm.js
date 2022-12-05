@@ -10,7 +10,7 @@ class HatForm extends React.Component {
     this.state = {
       fabric: "",
       style_name: "",
-      color: "",
+      color: "#000000",
       url: "",
       locations: [],
     };
@@ -57,7 +57,7 @@ class HatForm extends React.Component {
       const cleared = {
         fabric: "",
         style_name: "",
-        color: "",
+        color: "#000000",
         url: "",
         location: "",
       };
@@ -146,19 +146,6 @@ class HatForm extends React.Component {
                 </div>
                 <div className="form-floating mb-3">
                   <input
-                    onChange={this.handleColorChange}
-                    value={this.state.color}
-                    placeholder="color"
-                    required
-                    type="text"
-                    name="color"
-                    id="color"
-                    className="form-control"
-                  />
-                  <label htmlFor="color">Color</label>
-                </div>
-                <div className="form-floating mb-3">
-                  <input
                     onChange={this.handleUrlChange}
                     value={this.state.url}
                     placeholder="https://example.com/"
@@ -192,7 +179,21 @@ class HatForm extends React.Component {
                     })}
                   </select>
                 </div>
+                <div className="mb-3">
+                  <input
+                    onChange={this.handleColorChange}
+                    value={this.state.color}
+                    input-placeholder-color="#000000"
+                    type="color"
+                    id="color"
+                    className="form-control form-control-color"/>
+                  <label htmlFor="color">Color</label>
+                </div>
+                <div className="container">
+                <div className="col-md-12 text-center">
                 <button className="btn btn-primary">Add</button>
+                </div>
+                </div>
               </form>
             </div>
           </div>
